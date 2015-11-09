@@ -7,6 +7,8 @@
 <body>
     <p style="color:#1118ff"><i>演示如何使用Nodejs的Multer控件，进行单张图片、多张相同名称、不通名称图片上传.</i></p>
     <p style="color:#1118ff"><i>具体操作请看代码。</i></p>
+    <p style="color:#1118ff"><i>常用的文件操作控件有 busboy, multer, formidable, multiparty, connect-multiparty, pez等。</i></p>
+    <hr>
     <div style="color:red">演示上传单张图片</div><br>
     <div>
         <form id="single_form" method="POST" action="/upload/single" enctype="multipart/form-data">
@@ -16,6 +18,7 @@
         </form>
     </div>
     <br>
+    <hr>
     <!--<div style="color:green">演示上传相同名称的多张图片</div><br>
     <div>
         <form id="multi_form" method="POST" action="/upload/multi" enctype="multipart/form-data">
@@ -36,5 +39,12 @@
             <input type="submit" value="提交">
         </form>
     </div>-->
+
+    <p style="color:#1118ff"><i>下载文件，简单的做法，只需要调用express框架的res.download()即可。</i></p>
+    <div style="color:red">演示下载图片</div><br>
+    <div>
+        <a href="/download/head" target="_blank">下载头像图片</a>
+        <div id="head"></div>
+    </div>
 </body>
 </html>

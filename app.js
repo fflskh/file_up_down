@@ -50,20 +50,20 @@ app.post('/upload/single', upload.single('head'), function(req, res, next){
     //req.body存储form中的文字数据
     //console.log('body : ', req.body);
     //req.file存储图片属性
-    //console.log(req.file);
+    console.log(req.file);
 
     //传输图片到远端，使用node插件needle（若使用原生的http大体相同）
     var buffer = fs.readFileSync(req.file.path);
     var data = {
-        file: {
+        head: {
             buffer       : buffer,
             filename     : req.file.filename,
-            content_type : 'application/octet-stream'
+            content_type : 'image/jpeg'
         }
     };
 
     //向remote server发送图片
-    needle.post('http://127.0.0.1:6000/remote/upload', data, { multipart: true }, function(err, resp, body) {
+    needle.post('http://127.0.0.1:7000/remote/upload', data, { multipart: true }, function(err, resp, body) {
         if(err || resp.statusCode !== 200){
             if(err)
                 console.error('upload to remote : ',err);
@@ -91,6 +91,11 @@ app.post('/upload/single', upload.single('head'), function(req, res, next){
     res.send('ok');
 });*/
 
+
+//下载文件
+app.get('/download/head', function(req, res, next){
+    res.download(process.cwd() + '/uploads/head.jpeg');
+});
 
 
 // catch 404 and forward to error handler
