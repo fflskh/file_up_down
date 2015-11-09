@@ -58,7 +58,7 @@ app.post('/upload/single', upload.single('head'), function(req, res, next){
         head: {
             buffer       : buffer,
             filename     : req.file.filename,
-            content_type : 'image/jpeg'		//此处格式必须指定正确
+            content_type : 'image/jpeg'
         }
     };
 
